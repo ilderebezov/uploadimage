@@ -1,0 +1,16 @@
+<h1>Upload image</h1>
+<div class="container">
+    <form action="." method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        Enter Hex code: <input type="text" name="HEX_code"><br><br>
+        <button type="submit" class="btn btn-lg btn-success">Upload image</button>
+    </form>
+    {% if obj %}
+    <h3> Succesfully uploaded : {{img_obj.caption}}</h3>
+    <img src="{{ obj.image.url}}" alt="image" class="img-thumbnail">
+    <p> Dominant color is {{result}}. </p>
+    <p> The number of pixels with the hex code - {{hex_code}} is {{hex_code_num}}. </p>
+    {% endif %}
+</div>
+
